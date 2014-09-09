@@ -3,3 +3,15 @@ td {
   height: 50px;
   border: 1px solid #777;
 }
+
+td.note {
+  background: rgba(255,0,0,1);
+}
+
+tr.current {
+  background: rgba(255,255,0,1);
+}
+
+tr.current td.note{
+  background: rgba(255,127,0,1); 
+}
