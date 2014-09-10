@@ -1,0 +1,15 @@
+{
+  "name": "miedr",
+  "version": "0.0.0",
+  "description": "Midi Editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "*",
+    "grunt-typescript": "~0.3.8"
+  }
+}
