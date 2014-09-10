@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "grunt": "*",
-    "grunt-typescript": "~0.3.8"
+    "grunt-typescript": "~0.3.8",
+    "grunt-contrib-copy": "~0.5.0"
   }
 }
