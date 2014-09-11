@@ -1,0 +1,16 @@
+.track {
+  width: 100%;
+  list-style: none;
+
+  .track-legend {
+    vertical-align: top;
+    display: inline-block;
+    width: 100px;
+  }
+
+  .track-field {
+    vertical-align: top;
+    width: 600px;
+    display: inline-block;
+  }
+}

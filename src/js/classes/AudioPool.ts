@@ -1,3 +1,3 @@
-class AudioPool {
+export class AudioPool {
   
 }
