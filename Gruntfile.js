@@ -69,6 +69,9 @@ grunt.initConfig({
           return name.replace(/^src\/templates\//, '').replace(/\.html$/, '')
         }
       }
+    },
+    jshint: {
+      all: ['src/js/**/*.js']
     }
 });
 
@@ -76,5 +79,6 @@ grunt.loadNpmTasks('grunt-typescript');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-sass');
 grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-tpl');
-grunt.registerTask('default', ['copy', 'sass', 'typescript', 'tpl']);
+grunt.registerTask('default', ['jshint', 'copy', 'sass', 'typescript', 'tpl']);

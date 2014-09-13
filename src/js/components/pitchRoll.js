@@ -3,16 +3,16 @@ define(['templates', 'vue', 'classes/Note'], function(templates, Vue, Note) {
     template: templates.pitchRoll,
     methods: {
       gridClicked: function(e) {
-        console.log(this.$data)
-        var posX: Number = e.clientX - e.target.offsetLeft;
-        var posY: Number = e.clientY - e.target.offsetTop;
-        var frame: Number = this.convertPositionToTime(posX);
+        console.log(this.$data);
+        var posX = e.clientX - e.target.offsetLeft;
+        var posY = e.clientY - e.target.offsetTop;
+        var frame = this.convertPositionToTime(posX);
         var newNote = new Note();
       //  this.$dispatch('add-note', note);
       }
       
     },
-    convertPositionToFrame: function(posX: Number): Number {
+    convertPositionToFrame: function(posX) {
         return 12;
       }
   });
