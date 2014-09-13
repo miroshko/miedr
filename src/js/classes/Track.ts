@@ -1,4 +1,4 @@
-import Note = require('Note');
+import Note = require('./Note');
 
 export class Track {
   id: Number;

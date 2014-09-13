@@ -12,7 +12,7 @@
       <h2>{{ name }}</h2>
       <div class="toolbox">
         <label>
-          Tempo {{ tempo }}
+          Tempo
           <input type="number" name="tempo" v-model="tempo">
         </label>
         <button>Play</button>
@@ -23,15 +23,7 @@
       <div class="pane">
         <ul class="tracks">
           <li class="track" v-repeat="tracks" v-component="pitch-roll" v-with="$value">
-            <!-- ul class="track-legend piano-roll">
-              <li class="key key-{{ $index % 12 }}" data-pitch="{{$index}}" v-repeat="pitches">
-              </li>
-            </ul>
-            <ul class="track-field piano-grid">
-              <li v-repeat="pitches" class="pitch pitch-{{ $index % 12 }}" v-on="click: $value">
-                {{ $value }}
-              </li>
-            </ul -->
+
           </li>
         </ul>
       </div>

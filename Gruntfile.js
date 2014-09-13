@@ -3,19 +3,12 @@ var grunt = require('grunt');
 grunt.initConfig({
     typescript: {
       classes: {
-        src: ['src/js/classes/**/*.ts'],
+        src: ['src/js/**/*.ts'],
         dest: 'build/js',
         options: {
           module: 'amd', //or commonjs
           target: 'es5', //or es3
           basePath: 'src/js',
-        }
-      },
-      app: {
-        src: 'src/js/app.ts',
-        dest: 'build/js/',
-        options: {
-          basePath: 'src/js'
         }
       }
     },
@@ -23,7 +16,6 @@ grunt.initConfig({
       base: {
         files: [
           {expand: true, cwd: 'src', src:'audio/*', dest: 'build'},
-          {expand: true, cwd: 'src', src:'css/*', dest: 'build'},
           {expand: true, cwd: 'src', src:'index.html', dest: 'build'}
         ]
       }
@@ -55,10 +47,26 @@ grunt.initConfig({
         },
       },
       rest: {
-        files: ['src/**/*.html'],
+        files: ['src/*.html'],
         tasks: ['copy'],
         options: {
           spawn: false
+        }
+      },
+      templates: {
+        files: ['src/templates/**/*.html'],
+        tasks: ['tpl'],
+        options: {
+          spawn: false
+        }
+      }
+    },
+    tpl: {
+      "build/js/templates.js": ["src/templates/*.html"],
+      options: {
+        namespace: 'Templates',
+        processName: function(name) {
+          return name.replace(/^src\/templates\//, '').replace(/\.html$/, '')
         }
       }
     }
@@ -68,4 +76,5 @@ grunt.loadNpmTasks('grunt-typescript');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-sass');
 grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.registerTask('default', ['copy', 'typescript']);
+grunt.loadNpmTasks('grunt-tpl');
+grunt.registerTask('default', ['copy', 'sass', 'typescript', 'tpl']);

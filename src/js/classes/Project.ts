@@ -1,4 +1,4 @@
-import Track = require('Track');
+import Track = require('./Track');
 
 export class Project {
   name: string;

@@ -1,0 +1,11 @@
+$legendWidth: 100px;
+
+.pitch-roll-legend {
+  width: $legendWidth;
+  display: inline-block;
+}
+
+.pitch-roll-grid {
+  width: calc(100% - #{$legendWidth});
+  display: inline-block;
+}
