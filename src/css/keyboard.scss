@@ -60,5 +60,9 @@ $keyHeight: 15px;
     background: #ccf;
     height: calc(100% - 2px);
     border: 1px solid #abf;
+
+    &.selected {
+      background: #77a;
+    }
   }
 }

@@ -65,7 +65,7 @@ grunt.initConfig({
       }
     },
     jshint: {
-      all: ['src/js/**/*.js']
+      all: ['src/js/**/*.js', '!src/js/lib/**/*.js']
     }
 });
 
