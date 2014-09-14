@@ -64,5 +64,23 @@ $keyHeight: 15px;
     &.selected {
       background: #77a;
     }
+
+    .resize-marker-end,
+    .resize-marker-begin {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      border: 1px solid rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.3);
+      display: block;
+      cursor: col-resize;
+    }
+
+    .resize-marker-begin {
+      left:0;
+      right: auto;
+    }
   }
 }
