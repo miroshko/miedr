@@ -47,9 +47,17 @@ $keyHeight: 15px;
     height: $keyHeight - 1px;
     width: 100%;
     border-bottom: 1px solid #eee;
+    position: relative;
   }
 
   .pitch-1, .pitch-3, .pitch-6, .pitch-8, .pitch-10 {
     background: #fafafa; 
+  }
+
+  .note {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    border: 1px solid #abf;
   }
 }

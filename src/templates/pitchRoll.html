@@ -2,7 +2,7 @@
   <li class="key key-{{ $index % 12 }}" data-pitch="{{$index}}" v-repeat="pitches">
   </li>
 </ul><ul class="pitch-roll-grid">
-  <li v-repeat="pitches" class="pitch pitch-{{ $index % 12 }}" v-on="click: $value">
-    {{ $value }}
+  <li v-repeat="pitches" class="pitch pitch-{{ $index % 12 }}" v-on="click: gridClicked">
+    <span class="note" v-repeat="notes" v-component="note" v-with="$value"></span>
   </li>
 </ul>

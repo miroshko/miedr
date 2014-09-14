@@ -1,22 +1,16 @@
 var grunt = require('grunt');
 
 grunt.initConfig({
-    typescript: {
-      classes: {
-        src: ['src/js/**/*.ts'],
-        dest: 'build/js',
-        options: {
-          module: 'amd', //or commonjs
-          target: 'es5', //or es3
-          basePath: 'src/js',
-        }
-      }
-    },
     copy: {
       base: {
-        files: [
+        files:[
           {expand: true, cwd: 'src', src:'audio/*', dest: 'build'},
           {expand: true, cwd: 'src', src:'index.html', dest: 'build'}
+        ]
+      },
+      js: {
+        files: [
+          {expand: true, cwd: 'src', src:'js/**/*.js', dest: 'build'}
         ]
       }
     },
@@ -39,9 +33,9 @@ grunt.initConfig({
           spawn: false,
         },
       },
-      ts: {
-        files: ['src/js/**/*.ts'],
-        tasks: ['typescript'],
+      js: {
+        files: ['src/js/**/*.js'],
+        tasks: ['jshint', 'copy:js'],
         options: {
           spawn: false,
         },
@@ -75,10 +69,9 @@ grunt.initConfig({
     }
 });
 
-grunt.loadNpmTasks('grunt-typescript');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-sass');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-tpl');
-grunt.registerTask('default', ['jshint', 'copy', 'sass', 'typescript', 'tpl']);
+grunt.registerTask('default', ['jshint', 'copy', 'sass', 'tpl']);

@@ -1,4 +1,4 @@
-define(['templates', './pitchRoll'], function(templates, pitchRoll) {
+define(['templates', 'components/pitchRoll'], function(templates, pitchRoll) {
   var pianoRoll = pitchRoll.extend({
     template: templates.pianoRoll
   });
