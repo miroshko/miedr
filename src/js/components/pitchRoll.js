@@ -1,8 +1,4 @@
 define(['templates', 'vue', 'components/pitch'], function (templates, Vue, pitch) {
-  function convertPositionToTime(posX) {
-    return 12;
-  }
-
   var pitchRoll = Vue.extend({
     template: templates.pitchRoll,
     methods: {

@@ -3,7 +3,13 @@ define(['templates', 'vue'], function(templates, Vue) {
     template: templates.note,
     computed: {
       pxRatio: function() {
-        return 0.2;
+        return this.$parent.pxRatio;
+      }
+    },
+    methods: {
+      clicked: function(e) {
+        console.log("clicked on note");
+        e.stopPropagation();
       }
     }
   });
