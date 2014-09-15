@@ -4,7 +4,7 @@
 
 body {
   background: #333;
-  color: #3cf;
+  color: #29d;
 }
 
 .project {
@@ -19,4 +19,16 @@ body {
 ul, li {
   margin: 0;
   padding: 0;
+}
+
+button {
+  border: 0;
+  padding: 8px;
+  background: #f0f5ff;
+  color: #29d;
+
+  &.active {
+    color: #fff;
+    background: #29d;
+  }
 }

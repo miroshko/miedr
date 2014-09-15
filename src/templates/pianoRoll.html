@@ -1,3 +1,7 @@
+<div class="toolbox">
+  <button v-on="click: mode='edit'" v-class="active: mode == 'edit'">Add/Edit</button>
+  <button v-on="click: mode='erase'" v-class="active: mode == 'erase'">Erase</button>
+</div>
 <ul class="pitch-roll-legend piano-roll">
   <li class="key key-{{ $index % 12 }}" data-pitch="{{$index}}" v-repeat="pitches">
   </li>

@@ -4,11 +4,19 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
     computed: {
       pxRatio: function() {
         return this.$parent.pxRatio;
+      },
+      mode: function() {
+        return this.$parent.mode;
       }
     },
     methods: {
       onMousedown: function(e) {
-        // this.$data.selected = true;
+        if (this.mode == 'erase') {
+          this.$dispatch('destroyNote', this.$data);
+          e.stopPropagation();
+          return;
+        }
+        this.$data.selected = true;
       },
       onClick: function(e) {
         e.stopPropagation();
