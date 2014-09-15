@@ -2,8 +2,8 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
   var note = Vue.extend({
     template: templates.note,
     computed: {
-      pxRatio: function() {
-        return this.$parent.pxRatio;
+      px_ratio: function() {
+        return this.$parent.px_ratio;
       },
       mode: function() {
         return this.$parent.mode;
@@ -16,7 +16,7 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
           e.stopPropagation();
           return;
         }
-        this.$data.selected = true;
+        // this.$data.selected = true;
       },
       onClick: function(e) {
         e.stopPropagation();

@@ -42,7 +42,9 @@ $keyHeight: 15px;
 }
 
 .piano-grid {
-  list-style: none;
+  ul {
+    list-style: none;
+  }
   .pitch {
     height: $keyHeight - 1px;
     width: 100%;

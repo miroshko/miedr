@@ -5,6 +5,8 @@ define(['classes/Track'], function(Track) {
     this.tempo = 120;
     this.tracks = [];
     this.tracks.push(new Track());
+    this.current_position = 1000;
+    this.playback_interval = null; // should be here?
   }
   return Project;
 });

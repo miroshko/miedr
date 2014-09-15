@@ -8,4 +8,15 @@ $legendWidth: 100px;
 .pitch-roll-grid {
   width: calc(100% - #{$legendWidth});
   display: inline-block;
+  position: relative;
+}
+
+.time-marker {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 1px;
+  background: rgba(100,100,140, 0.5);
+  border: 1px solid rgba(100,100,140, 0.2);
+  z-index: 40;
 }

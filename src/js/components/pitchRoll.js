@@ -3,6 +3,11 @@ define(['templates', 'vue', 'components/pitch'], function (templates, Vue, pitch
     template: templates.pitchRoll,
     methods: {
 
+    },
+    computed: {
+      px_ratio: function() {
+        return this.$parent.px_ratio;
+      }
     }
   });
 

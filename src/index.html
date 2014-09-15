@@ -15,8 +15,9 @@
           Tempo
           <input type="number" name="tempo" v-model="tempo">
         </label>
-        <button>Play</button>
-        <button>Pause</button><br>
+        <button v-class="active: playing == true" v-on="click: play">Play</button>
+        <button v-on="click: pause">Pause</button>
+        <button v-on="click: stop">Stop</button>
       </div>
       <div class="pane">
         <ul class="tracks">
@@ -29,7 +30,6 @@
       <span>Todo:</span>
       <ol>
         <li>Select</li>
-        <li>Erase</li>
         <li>Play/pause</li>
         <li>Tempo</li>
         <li>Styling</li>

@@ -8,8 +8,5 @@ define(['classes/Pitch'], function(Pitch) {
     this.volume = 100;
     this.mode = 'edit';
   }
-  Track.prototype.gridClick = function() {
-    console.log("121");
-  };
   return Track;
 });
