@@ -16,7 +16,7 @@ define(['templates', 'vue', 'components/note', 'classes/Note'], function(templat
         var note = new Note();
         note.duration = 1000;
         note.start = posX / this.px_ratio;
-        this.$data.notes.push(note);
+        this.$data.addNote(note);
       },
       destroyNote: function(note) {
         var index = this.$data.notes.indexOf(note);

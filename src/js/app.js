@@ -15,34 +15,52 @@ require.config({
   }
 });
 
-require(['vue', 'classes/Project', 'components/pianoRoll'], function(Vue, Project, pianoRoll) {
-  // @todo: move project to project component
-  var project = new Project();
+require([
+  'vue',
+  'classes/Project',
+  'components/pianoRoll',
+  'classes/NoteScheduler',
+  'classes/AudioPool'
+  ], function(Vue, Project, pianoRoll, NoteScheduler, AudioPool) {
+  var audio_pool = new AudioPool();
+  var note_scheduler = new NoteScheduler(audio_pool);
+  var project = new Project(note_scheduler);
 
   project.name = "Project name";
   project.tempo = 60;
 
+  // @todo: move project to project component
   var miedr = new Vue({
     el: '#the-only-project-so-far',
+    // is it OK to make the whole project object to the data property?
     data: project,
     methods: {
       play: function() {
-        var _this = this;
+        var project = this.$data;
+        var resolution_ms = 100;
         if(this.playing)
           return;
-        // @todo@tomorrow naive intervaling. verify position 
-        this.$data.playback_interval = setInterval(function() {
-          _this.$data.current_position += 10;
-        }, 100);
-        this.$data.playing = true;
+
+        console.log("Getting all project notes");
+        var notes = project.getNotesArray();
+        console.log("Will not schedule the following notes: " , notes);
+        project.note_scheduler.schedule(this.$data.current_position, notes);
+
+        project.playback_interval = setInterval(function() {
+          project.current_position += 1 * resolution_ms;
+        }, resolution_ms);
+        this.$dispatch('schedule_notes', this.$data);
+        project.playing = true;
       },
       pause: function() {
         clearInterval(this.$data.playback_interval);
+        project.note_scheduler.cancelAllScheduled();
         this.$data.playing = false;
         this.playback_interval = null;
       },
       stop: function() {
         this.pause();
+        project.note_scheduler.cancelAllScheduled();
         this.$data.current_position = 0;
       }
     },

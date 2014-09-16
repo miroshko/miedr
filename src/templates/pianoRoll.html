@@ -3,12 +3,12 @@
   <button v-on="click: mode='erase'" v-class="active: mode == 'erase'">Erase</button>
 </div>
 <ul class="pitch-roll-legend piano-roll">
-  <li class="key key-{{ $index % 12 }}" data-pitch="{{$index}}" v-repeat="pitches">
+  <li class="key key-{{ pitch % 12 }}" data-pitch="{{ pitch }}" v-repeat="pitches">
   </li>
 </ul><div class="pitch-roll-grid piano-grid">
   <div class="time-marker" style="left:{{ px_ratio * current_position}}px"></div>
   <ul>
-    <li v-repeat="pitches" class="pitch pitch-{{ $index % 12 }}" v-on="click: clicked" v-component="pitch" v-with="notes" v-on="click: gridClicked">
+    <li v-repeat="pitches" class="pitch pitch-{{ pitch % 12 }}" v-on="click: clicked" v-component="pitch" v-with="notes" v-on="click: gridClicked">
     </li>
   </ul>
 </div>

@@ -1,12 +1,21 @@
 define(['classes/Pitch'], function(Pitch) {
   function Track() {
     this.id = null;
-    this.pitches = new Array(12);
-    for(var i = 0; i < this.pitches.length; i++) {
-      this.pitches[i] = new Pitch();
+    this.pitches = [];
+    console.log(this.pitches.length);
+    for(var i = 11; i >= 0; i--) {
+      this.pitches.push(new Pitch(i));
     }
     this.volume = 100;
     this.mode = 'edit';
+    this.getNotesArray = function() {
+      var notes = [];
+      this.pitches.forEach(function(pitch) {
+        notes = notes.concat(pitch.notes);
+      });
+      return notes;
+    };
   }
+
   return Track;
 });
