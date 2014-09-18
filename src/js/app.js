@@ -44,10 +44,10 @@ require([
         console.log("Getting all project notes");
         var notes = project.getNotesArray();
         console.log("Will not schedule the following notes: " , notes);
-        project.note_scheduler.schedule(this.$data.current_position, notes);
+        project.note_scheduler.schedule(project.current_position, project.tempo, notes);
 
         project.playback_interval = setInterval(function() {
-          project.current_position += 1 * resolution_ms;
+          project.current_position += 1 * resolution_ms * project.tempo / 60;
         }, resolution_ms);
         this.$dispatch('schedule_notes', this.$data);
         project.playing = true;

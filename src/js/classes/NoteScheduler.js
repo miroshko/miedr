@@ -4,13 +4,13 @@ define([], function() {
       throw new Error("audio_pool must be passed");
     }
     this.audio_pool = audio_pool;
-    this.schedule = function(current_timeframe, note_or_array) {
+    this.schedule = function(current_timeframe, tempo, note_or_array) {
       if (!(note_or_array instanceof Array)) {
         note_or_array = [note_or_array];
       }
 
       note_or_array.forEach(function(note) {
-        var start_timeframe = note.start - current_timeframe;
+        var start_timeframe = (note.start - current_timeframe) * 60 / tempo;
         console.log("scheduled to play " + note.pitch + " in " + start_timeframe);
         if (start_timeframe < 0)
           return;
@@ -19,7 +19,7 @@ define([], function() {
         note_player.setNote(note);
 
         setTimeout(function() {
-          note_player.play();
+          note_player.play(tempo);
         }, start_timeframe);
       }, this);
     };

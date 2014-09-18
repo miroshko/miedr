@@ -16,7 +16,7 @@ define([], function() {
   NotePlayer.prototype.setNote = function(note) {
     this.note = note;
   };
-  NotePlayer.prototype.play = function() {
+  NotePlayer.prototype.play = function(tempo) {
     var file = this._notes[this.note.pitch];
     if (!file) {
       throw new Error("Unknown note");
@@ -26,7 +26,7 @@ define([], function() {
     audio.play();
     setTimeout(function() {
       audio.pause();
-    }, this.note.duration);
+    }, this.note.duration * 60 / tempo);
   };
   function NotePlayer() {
   }
