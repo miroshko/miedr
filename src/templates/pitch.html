@@ -1,1 +1,3 @@
-<span v-repeat="notes" v-component="note" v-with="$value"><span>
+<div class="pitch pitch-{{ pitch % 12 }}" v-on="click: clicked">
+  <span v-repeat="notes" v-component="note"><span>
+</div>

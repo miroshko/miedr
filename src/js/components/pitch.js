@@ -12,7 +12,7 @@ define(['templates', 'vue', 'components/note', 'classes/Note'], function(templat
         if (this.mode == 'erase')
           return;
         // @todo: add proper position calculation
-        var posX = e.clientX - e.target.parentNode.parentNode.offsetLeft;
+        var posX = e.clientX - e.target.parentNode.parentNode.parentNode.offsetLeft;
         var note = new Note();
         note.duration = 1000;
         note.start = posX / this.px_ratio;

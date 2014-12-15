@@ -22,7 +22,7 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
         e.stopPropagation();
       }
     },
-    created: function () {
+    ready: function () {
       var _this = this;
       interact(this.$el).draggable({
         onmove: function(e) {
