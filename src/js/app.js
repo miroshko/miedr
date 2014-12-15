@@ -30,10 +30,8 @@ require([
   project.name = "Project name";
   project.tempo = 60;
 
-  // @todo: move project to project component
   var miedr = new ProjectComponent({
     el: '#the-only-project-so-far',
-    // is it OK to make the whole project object to the data property?
     data: project,
     components: {
       // @todo: avoid direct assignment of pitch-roll. Use track

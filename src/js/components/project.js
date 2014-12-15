@@ -18,13 +18,13 @@ define(['vue'], function(Vue) {
       },
       pause: function() {
         clearInterval(this.$data.playback_interval);
-        project.note_scheduler.cancelAllScheduled();
+        this.$data.note_scheduler.cancelAllScheduled();
         this.$data.playing = false;
         this.playback_interval = null;
       },
       stop: function() {
         this.pause();
-        project.note_scheduler.cancelAllScheduled();
+        this.$data.note_scheduler.cancelAllScheduled();
         this.$data.current_position = 0;
       }
     },
