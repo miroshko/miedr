@@ -4,7 +4,7 @@ require.config({
   baseUrl: 'js',
   paths: {
     'lodash': '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
-    'vue': 'https://raw.githubusercontent.com/yyx990803/vue/v0.10.6/dist/vue',
+    'vue': '//cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
     'interact': 'lib/interact',
     'templates': 'templates'
   },
@@ -41,9 +41,7 @@ require([
         if(this.playing)
           return;
 
-        console.log("Getting all project notes");
         var notes = project.getNotesArray();
-        console.log("Will not schedule the following notes: " , notes);
         project.note_scheduler.schedule(project.current_position, project.tempo, notes);
 
         project.playback_interval = setInterval(function() {
