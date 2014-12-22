@@ -18,11 +18,10 @@ require.config({
 require([
   'vue',
   'classes/Project',
-  'components/pianoRoll',
   'components/project',
   'classes/NoteScheduler',
   'classes/AudioPool'
-  ], function(Vue, Project, pianoRoll, ProjectComponent, NoteScheduler, AudioPool) {
+  ], function(Vue, Project, ProjectComponent, NoteScheduler, AudioPool) {
   var audio_pool = new AudioPool();
   var note_scheduler = new NoteScheduler(audio_pool);
   var project = new Project(note_scheduler);
@@ -30,13 +29,13 @@ require([
   project.name = "Project name";
   project.tempo = 60;
 
-  var miedr = new ProjectComponent({
+
+
+  var miedr = new Vue({
     el: '#the-only-project-so-far',
-    data: project,
+    data: {project: project},
     components: {
-      // @todo: avoid direct assignment of pitch-roll. Use track
-      // 'track': trackComponent
-      'pitch-roll': pianoRoll
+      'project': ProjectComponent
     }
   });
 });

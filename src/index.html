@@ -8,42 +8,9 @@
     <meta charset="utf8" />
   </head>
   <body>
-    <div id="the-only-project-so-far" class="project">
-      <i style="color:red">Work in progress. Last update: ##last_update##</i>
-      <h2>{{ name }}</h2>
-      <div class="toolbox">
-        <label>
-          Tempo
-          <input type="number" name="tempo" v-model="tempo">
-        </label>
-        <button v-class="active: playing == true" v-on="click: play">Play</button>
-        <button v-on="click: pause">Pause</button>
-        <button v-on="click: stop">Stop</button>
-      </div>
-      <div class="pane">
-        <ul class="tracks">
-          <li class="track" v-repeat="tracks" v-component="pitch-roll">
-          </li>
-        </ul>
-      </div>
+    <div id="the-only-project-so-far">
+      <div v-component="project" v-with="project"></div>
     </div>
-    <div style="font-size: 50%">
-      <span>Todo:</span>
-      <ol>
-        <li>Tests</li>
-        <li>Select</li>
-        <li>Tempo</li>
-        <li>Styling</li>
-        <li>Save/load on server or in localStorage</li>
-      </ol>
-      <span>Next:</span>
-      <ol>
-        <li>Move up/down</li>
-        <li>Sticky grid</li>
-        <li>Sticky note edges</li>
-      </ol>
-    </div>
-
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="js/app.js"></script>

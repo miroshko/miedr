@@ -2,7 +2,6 @@ define(['classes/Pitch'], function(Pitch) {
   function Track() {
     this.id = null;
     this.pitches = [];
-    console.log(this.pitches.length);
     for(var i = 11; i >= 0; i--) {
       this.pitches.push(new Pitch(i));
     }

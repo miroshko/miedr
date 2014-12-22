@@ -1,5 +1,6 @@
-define(['vue'], function(Vue) {
+define(['vue', 'components/pianoRoll', 'templates'], function(Vue, PianoRoll, templates) {
   return Vue.extend({
+    template: templates.project,
     methods: {
       play: function() {
         var project = this.$data;
@@ -32,6 +33,9 @@ define(['vue'], function(Vue) {
       px_ratio: function() {
         return 0.2;
       }
+    },
+    components: {
+      'pitch-roll': PianoRoll
     }
   });
 });

@@ -1,0 +1,18 @@
+<div class="project">
+  <h2>{{ name }}</h2>
+  <div class="toolbox">
+    <label>
+      Tempo
+      <input type="number" name="tempo" v-model="tempo">
+    </label>
+    <button v-class="active: playing == true" v-on="click: play">Play</button>
+    <button v-on="click: pause">Pause</button>
+    <button v-on="click: stop">Stop</button>
+  </div>
+  <div class="pane">
+    <ul class="tracks">
+      <li class="track" v-repeat="tracks" v-component="pitch-roll">
+      </li>
+    </ul>
+  </div>
+</div>

@@ -46,19 +46,13 @@ grunt.initConfig({
         options: {
           spawn: false
         }
-      },
-      templates: {
-        files: ['src/templates/**/*.html'],
-        tasks: ['tpl'],
-        options: {
-          spawn: false
-        }
       }
     },
     tpl: {
       "build/js/templates.js": ["src/templates/*.html"],
       options: {
         namespace: 'Templates',
+        amd: true,
         processName: function(name) {
           return name.replace(/^src\/templates\//, '').replace(/\.html$/, '')
         }
@@ -73,5 +67,5 @@ grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-sass');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-jshint');
-grunt.loadNpmTasks('grunt-tpl');
+grunt.loadNpmTasks('grunt-tpl-amd');
 grunt.registerTask('default', ['jshint', 'copy', 'sass', 'tpl']);
