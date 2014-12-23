@@ -8,8 +8,12 @@
       'boot': 'tests/jasmine/lib/jasmine-2.0.0/boot',
       'lodash': '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
       'vue': '//cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
+      'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
       'interact': 'build/js/lib/interact',
-      'templates': 'build/js/templates'
+      'templates': 'build/js/templates',
+      'components': 'build/js/components',
+      'classes': 'build/js/classes',
+      'lib': 'build/js/lib'
     },
     shim: {
       'jasmine': {

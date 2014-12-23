@@ -46,6 +46,13 @@ grunt.initConfig({
         options: {
           spawn: false
         }
+      },
+      templates: {
+        files: ['src/templates/*.html'],
+        tasks: ['tpl'],
+        options: {
+          spawn: false
+        }
       }
     },
     tpl: {
