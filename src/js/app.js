@@ -29,7 +29,7 @@ require([
   project.name = "Project name";
   project.tempo = 60;
 
-
+  window.pR = project;
 
   var miedr = new Vue({
     el: '#the-only-project-so-far',

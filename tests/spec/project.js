@@ -38,8 +38,34 @@ define([
       $('#' + el_id).remove();
     });
 
-    it('has a name', function() {
-      expect($el.find('.project-name').text()).toEqual(project.name);
+    it('has correct name', function(done) {
+      var $name = $el.find('.project-name');
+      expect($name.text()).toEqual(project.name);
+      var new_name = "Sebastian 40";
+      project.name = new_name;
+      setTimeout(function() {
+        expect($name.text()).toEqual(new_name);
+        done();
+      }, 50);
+      
+    });
+
+    it('has correct tempo', function(done) {
+      $tempo = $el.find('input[name=tempo]');
+      expect($tempo.val()).toEqual(project.tempo.toString());
+      var new_tempo = 99;
+      var new_tempo_2 = 194;
+      project.tempo = new_tempo;
+      window.PP = project
+      setTimeout(function() {
+        expect($tempo.val()).toEqual(new_tempo.toString());
+        done();
+      }, 50);
+      
+    });
+
+    it('allows tempo from 1 to 360', function() {
+
     });
   });
 });
