@@ -1,6 +1,17 @@
-define(['templates', 'components/pitchRoll'], function(templates, pitchRoll) {
+define(['templates', 'components/pitchRoll', 'interact'], function(templates, pitchRoll, interact) {
   var pianoRoll = pitchRoll.extend({
-    template: templates.pianoRoll
+    template: templates.pianoRoll,
+    ready: function() {
+      var _this = this;
+      interact(this.$el.querySelector('.time-marker')).draggable({
+        onmove: function(e) {
+          var new_position = _this.$parent.$data.current_position + e.dx / _this.px_ratio;
+          new_position = Math.max(0, new_position);
+          _this.$parent.$data.current_position = new_position;
+          e.stopPropagation();
+        }
+      });
+    }
   });
   return pianoRoll;
 }); 
