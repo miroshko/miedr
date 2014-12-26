@@ -38,6 +38,13 @@ define([
       $('#' + el_id).remove();
     });
 
+    function trigger (target, event) {
+      var e = document.createEvent('HTMLEvents')
+      e.initEvent(event, true, true)
+      target.dispatchEvent(e)
+    }
+
+
     it('has correct name', function(done) {
       var $name = $el.find('.project-name');
       expect($name.text()).toEqual(project.name);
@@ -56,16 +63,21 @@ define([
       var new_tempo = 99;
       var new_tempo_2 = 194;
       project.tempo = new_tempo;
-      window.PP = project
       setTimeout(function() {
         expect($tempo.val()).toEqual(new_tempo.toString());
-        done();
+        $tempo.val(new_tempo_2);
+        trigger($tempo[0], 'input');
+        setTimeout(function() {
+          expect($tempo.val()).toEqual(new_tempo_2.toString());
+          done();
+        }, 50);
       }, 50);
       
     });
 
     it('allows tempo from 1 to 360', function() {
-
+      $tempo = $el.find('input[name=tempo]');
+      trigger($tempo[0], 'input')
     });
   });
 });
