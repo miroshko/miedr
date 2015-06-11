@@ -3,7 +3,7 @@
   <div class="toolbox">
     <label>
       Tempo {{ tempo }}
-      <input type="number" name="tempo" v-model="tempo">
+      <input type="number" name="tempo" v-model="tempo" v-validate="min:1, max: 360">
     </label>
     <button v-class="active: playing == true" v-on="click: play">Play</button>
     <button v-on="click: pause">Pause</button>

@@ -5,7 +5,7 @@ require.config({
   paths: {
     'lodash': '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
     'vue': '//cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
-    'interact': 'lib/interact',
+    'interact': '//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min',
     'templates': 'templates'
   },
   shim: {

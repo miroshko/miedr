@@ -1,4 +1,6 @@
-define(['vue', 'components/pianoRoll', 'templates'], function(Vue, PianoRoll, templates) {
+define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], function(Vue, PianoRoll, VueValidator, templates) {
+  Vue.use(VueValidator);
+  
   return Vue.extend({
     template: templates.project,
     methods: {
