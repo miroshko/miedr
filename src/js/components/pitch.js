@@ -3,14 +3,21 @@ define(['templates', 'vue', 'components/note', 'classes/Note'], function(templat
     template: templates.pitch,
     created: function() {
       // this.placeNotes();
-      this.destroyNote = this.destroyNote.bind(this);
-      this.$on('destroyNote', this.destroyNote);
+      var _this = this;
+      this.$on('clickedNote', function(note) {
+        if (_this.mode == 'erase') {
+          _this.destroyNote(note);
+        }
+
+      });
     },
     
     methods: {
       clicked: function(e) {
-        if (this.mode == 'erase')
+        if (this.mode == 'erase') {
+          console.log("ersers");
           return;
+        }
         // @todo: add proper position calculation
         var posX = e.clientX - e.target.parentNode.parentNode.parentNode.offsetLeft;
         var note = new Note();

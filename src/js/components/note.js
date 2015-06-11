@@ -4,23 +4,17 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
     computed: {
       px_ratio: function() {
         return this.$parent.px_ratio;
-      },
-      mode: function() {
-        return this.$parent.mode;
       }
     },
     methods: {
       onMousedown: function(e) {
-        if (this.mode == 'erase') {
-          this.$dispatch('destroyNote', this.$data);
-          e.stopPropagation();
-          return;
-        }
-        // this.$data.selected = true;
-      },
-      onClick: function(e) {
+        this.$dispatch('clickedNote', this.$data);
         e.stopPropagation();
-      }
+        return;
+      },
+      // onClick: function(e) {
+        // e.stopPropagation();
+      // }
     },
     ready: function () {
       var _this = this;
