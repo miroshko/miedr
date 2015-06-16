@@ -3,6 +3,11 @@ define(['templates', 'vue', 'components/pitch'], function (templates, Vue, pitch
     template: templates.pitchRoll,
     methods: {
     },
+    created: function() {
+      this.$on('moveNote', function(move) {
+        this.$data.moveNote({noteId: move.id, targetPitch: move.pitch});
+      });
+    },
     computed: {
       px_ratio: function() {
         return this.$parent.px_ratio;

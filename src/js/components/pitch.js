@@ -1,4 +1,8 @@
-define(['templates', 'vue', 'components/note', 'classes/Note'], function(templates, Vue, note, Note) {
+define(['templates',
+        'vue',
+        'components/note',
+        'classes/Note',
+        'interact'], function(templates, Vue, note, Note, interact) {
   var pitch = Vue.extend({
     template: templates.pitch,
     created: function() {
@@ -11,13 +15,18 @@ define(['templates', 'vue', 'components/note', 'classes/Note'], function(templat
 
       });
     },
-    
+    ready: function() {
+      // console.log(this.$el);
+      var _this = this;
+      interact(this.$el).dropzone({
+        ondrop: function(e) {
+          var id = parseInt(e.dragEvent.target.dataset.id);
+          _this.$dispatch("moveNote", {id: id, pitch: _this.pitch});
+        }
+      });
+    },
     methods: {
       clicked: function(e) {
-        if (this.mode == 'erase') {
-          console.log("ersers");
-          return;
-        }
         // @todo: add proper position calculation
         var posX = e.clientX - e.target.parentNode.parentNode.parentNode.offsetLeft;
         var note = new Note();

@@ -14,6 +14,25 @@ define(['classes/Pitch'], function(Pitch) {
       });
       return notes;
     };
+    this.moveNote = function(options) {
+      var noteId = options.noteId;
+      var targetPitch = options.targetPitch;
+      var pitch;
+
+      var findNote = function(n) {
+        return n.id == noteId;
+      };
+
+      for(var i = 0; i < this.pitches.length; i++) {
+        pitch = this.pitches[i];
+        var index = pitch.notes.findIndex(findNote);
+        if (index) {
+          this.pitches[targetPitch].notes.push(pitch.notes[index]);
+          pitch.notes = pitch.notes.splice(index, 1);
+          break;
+        }
+      }
+    };
   }
 
   return Track;

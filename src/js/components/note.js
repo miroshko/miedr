@@ -1,25 +1,24 @@
 define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
   var note = Vue.extend({
+    replace: true,
     template: templates.note,
     computed: {
       px_ratio: function() {
         return this.$parent.px_ratio;
-      }
+      },
     },
     methods: {
       onMousedown: function(e) {
         this.$dispatch('clickedNote', this.$data);
-        e.stopPropagation();
-        return;
       },
-      // onClick: function(e) {
-        // e.stopPropagation();
-      // }
+      onClick: function(e) {
+        e.stopPropagation();
+      }
     },
     ready: function () {
       var _this = this;
       interact(this.$el).draggable({
-        onmove: function(e) {
+        onend: function(e) {
           var new_pos = _this.$data.start + e.dx / _this.px_ratio;
           new_pos = Math.max(0, new_pos);
           _this.$data.start = new_pos;

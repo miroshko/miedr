@@ -11,7 +11,6 @@ define(['classes/Track'], function(Track) {
     this.getNotesArray = function() {
       var notes = [];
       this.tracks.forEach(function(track) {
-        console.log("attaching notes from trach ", track.getNotesArray());
         notes = notes.concat(track.getNotesArray());
       });
       return notes;
