@@ -30,7 +30,10 @@
 
   // Define all of your specs here. These are RequireJS modules.
   var specs = [
-    '../../tests/spec/ProjectSpec'
+    '../../tests/spec/ProjectSpec',
+    '../../tests/spec/TrackSpec',
+    '../../tests/spec/PitchSpec',
+    '../../tests/spec/NoteSpec'
   ];
 
   // Load Jasmine - This will still create all of the normal Jasmine browser globals unless `boot.js` is re-written to use the

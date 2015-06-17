@@ -6,6 +6,10 @@ define(['classes/Note'], function(Note) {
       this.notes.push(note);
       note.pitch = this.pitch;
     };
+
+    this.getNotesArray = function() {
+      return this.notes;
+    };
   };
   return Pitch;
 });
