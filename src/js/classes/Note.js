@@ -5,10 +5,17 @@ define([], function() {
     this.velocity = null;
     this.pitch = null;
     this.selected = false;
-    this.id = ++Note.prototype._idCounter;
+    this.id = ++Note._idCounter;
+    Note.instances[this.id] = this;
   }
 
-  Note.prototype._idCounter = 0;
+  Note._idCounter = 0;
+
+  Note.instances = {};
+
+  Note.getById = function(id) {
+    return Note.instances[id];
+  };
 
   return Note;
 });

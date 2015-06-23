@@ -19,6 +19,7 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
       var _this = this;
       interact(this.$el).draggable({
         onend: function(e) {
+          console.log("MOVE END");
           var new_pos = _this.$data.start + e.dx / _this.px_ratio;
           new_pos = Math.max(0, new_pos);
           _this.$data.start = new_pos;
