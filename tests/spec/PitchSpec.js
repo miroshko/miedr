@@ -37,5 +37,5 @@ define(['classes/Note', 'classes/Pitch'], function(Note, Pitch) {
       pitch.addNote(note);
       expect(note.pitch).toEqual(5);
     });
-  });;
+  });
 });

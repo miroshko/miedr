@@ -22,7 +22,7 @@ define(['classes/Note', 'classes/Track'], function(Note, Track) {
       expect(notes.length).toEqual(2);
     });
 
-    it('moves an array', function() {
+    it('moves an array of notes', function() {
 
     });
   });

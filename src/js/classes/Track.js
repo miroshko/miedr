@@ -15,7 +15,6 @@ define(['classes/Pitch'], function(Pitch) {
       return notes;
     };
     this.moveNote = function(options) {
-      console.log("MoVing note");
       var noteId = options.noteId;
       var targetPitch = options.targetPitch;
       var pitch;
