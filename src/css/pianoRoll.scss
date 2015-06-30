@@ -59,6 +59,7 @@ $keyHeight: 15px;
   .note {
     display: inline-block;
     position: absolute;
+    z-index: 45;
     background: #ccf;
     height: calc(100% - 2px);
     border: 1px solid #abf;

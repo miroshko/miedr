@@ -12,6 +12,9 @@ define(['templates', 'vue', 'components/pitch'], function (templates, Vue, pitch
       px_ratio: function() {
         return this.$parent.px_ratio;
       },
+      px_y_ratio: function() {
+        return this.$parent.px_y_ratio;
+      },
       current_position: function() {
         return this.$parent.current_position;
       }

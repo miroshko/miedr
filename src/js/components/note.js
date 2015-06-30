@@ -6,6 +6,9 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
       px_ratio: function() {
         return this.$parent.px_ratio;
       },
+      px_y_ratio: function() {
+        return this.$parent.px_y_ratio;
+      }
     },
     methods: {
       onMousedown: function(e) {
@@ -18,8 +21,7 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
     ready: function () {
       var _this = this;
       interact(this.$el).draggable({
-        onend: function(e) {
-          console.log("MOVE END");
+        onmove: function(e) {
           var new_pos = _this.$data.start + e.dx / _this.px_ratio;
           new_pos = Math.max(0, new_pos);
           _this.$data.start = new_pos;

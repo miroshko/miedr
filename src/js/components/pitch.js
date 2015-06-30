@@ -20,25 +20,32 @@ define(['templates',
       // console.log(this.$el);
       var _this = this;
       interact(this.$el).dropzone({
+        ondragenter: function(e) {
+          var id = parseInt(e.dragEvent.target.dataset.id);
+          var note = Note.getById(id);
+          console.log(note.pitch, _this.$data.pitch);
+          note.visualVerticalPitchOffset = note.pitch - _this.$data.pitch;
+        },
         ondrop: function(e) {
-          console.log("DROP");
           var id = parseInt(e.dragEvent.target.dataset.id);
           var note = Note.getById(id);
           var oldPitch = Pitch.getByPitch(note.pitch);
           oldPitch.removeNote(note);
           _this.$data.addNote(note);
+          note.visualVerticalPitchOffset = 0;
         }
       });
     },
     methods: {
       clicked: function(e) {
-        console.log("CLICKED")
-        // @todo: add proper position calculation
-        var posX = e.clientX - e.target.parentNode.parentNode.parentNode.offsetLeft;
-        var note = new Note();
-        note.duration = 1000;
-        note.start = posX / this.px_ratio;
-        this.$data.addNote(note);
+        if (this.mode == 'edit') {
+          // @todo: add proper position calculation
+          var posX = e.clientX - e.target.parentNode.parentNode.parentNode.offsetLeft;
+          var note = new Note();
+          note.duration = 1000;
+          note.start = posX / this.px_ratio;
+          this.$data.addNote(note);
+        } 
       },
       destroyNote: function(note) {
         this.$data.removeNote(note);  
@@ -47,6 +54,9 @@ define(['templates',
     computed: {
       px_ratio: function() {
         return this.$parent.px_ratio;
+      },
+      px_y_ratio: function() {
+        return this.$el.offsetHeight;
       },
       mode: function() {
         return this.$parent.$data.mode;

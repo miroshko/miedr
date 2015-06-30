@@ -6,6 +6,7 @@ define([], function() {
     this.pitch = null;
     this.selected = false;
     this.id = ++Note._idCounter;
+    this.visualVerticalPitchOffset = 0;
     Note.instances[this.id] = this;
   }
 

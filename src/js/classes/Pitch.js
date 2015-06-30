@@ -7,12 +7,9 @@ define(['classes/Note'], function(Note) {
       note.pitch = this.pitch;
     };
     this.removeNote = function(note) {
-      console.log("removing note", note);
       var index = this.notes.indexOf(note);
       if (index > -1) {
-        console.log("before", this.notes.length);
         this.notes.splice(index, 1);
-        console.log("after", this.notes.length);
       }
     };
     this.getNotesArray = function() {
