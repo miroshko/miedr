@@ -20,5 +20,16 @@ define(['classes/Note'], function(Note) {
       var retrievedNote = Note.getById(note1.id);
       expect(retrievedNote).toBe(note1);
     });
+
+    it('gets all selected notes', function() {
+      var note1 = new Note();
+      var note2 = new Note();
+      var note3 = new Note();
+      expect(Note.getSelected().length).toBe(0);
+
+      note1.selected = true;
+      note3.selected = true;
+      expect(Note.getSelected().length).toBe(2);
+    });
   });;
 });
