@@ -12,9 +12,10 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
     },
     methods: {
       onMousedown: function(e) {
-        this.$dispatch('clickedNote', this.$data);
+        this.$dispatch('clickedNote', this.$data, e);
       },
       onClick: function(e) {
+        // this.$data.selected = !this.$data.selected;
         e.stopPropagation();
       }
     },

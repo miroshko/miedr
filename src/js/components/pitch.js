@@ -9,11 +9,25 @@ define(['templates',
     created: function() {
       // this.placeNotes();
       var _this = this;
-      this.$on('clickedNote', function(note) {
+      this.$on('clickedNote', function(note, e) {
         if (_this.mode == 'erase') {
           _this.destroyNote(note);
-        }
+        } else {
+          //              Ctrl       wo Ctrl
+          // >1 Selctd    deselect   select, deselect others
+          // Selctd       deselect   deselect, deselect others
+          // Not selctd   select     select, deselect others
 
+
+          if (!e.ctrlKey) {
+            Note.getSelected().forEach(function(currNote) {
+              if (currNote.id != note.id) {
+                currNote.selected = !currNote.selected;
+              }
+            });
+          }
+          note.selected = !note.selected;
+        }
       });
     },
     ready: function() {
