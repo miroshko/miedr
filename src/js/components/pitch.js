@@ -23,7 +23,6 @@ define(['templates',
         ondragenter: function(e) {
           var id = parseInt(e.dragEvent.target.dataset.id);
           var note = Note.getById(id);
-          console.log(note.pitch, _this.$data.pitch);
           note.visualVerticalPitchOffset = note.pitch - _this.$data.pitch;
         },
         ondrop: function(e) {
