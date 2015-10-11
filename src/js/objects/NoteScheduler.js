@@ -1,13 +1,19 @@
 define([], function() {
   return function noteSchedulerFactory(notePlayer) {
-    var scheduledNotes = [];
+    var scheduledNotes = {};
+
+    var stop = function(entryId) {
+      var entry = scheduledNotes[entryId];
+      clearTimeout(entry.stopTimeout);
+      notePlayer.stop(entry.note);
+      delete(scheduledNotes[entryId]);
+    };
 
     return {
       schedule: function(currentTimeframe, tempo, noteOrArray) {
         if (!(noteOrArray instanceof Array)) {
           noteOrArray = [noteOrArray];
         }
-
         noteOrArray.forEach(function(note) {
           var startTimeframeRelative = (note.start - currentTimeframe) * 60 / tempo;
           var endTimeframeRelative = startTimeframeRelative + note.duration * 60 / tempo;
@@ -20,16 +26,15 @@ define([], function() {
           }, startTimeframeRelative);
 
           var stopTimeout = setTimeout(function() {
-            notePlayer.stop(note);
+            stop(playTimeout);
           }, endTimeframeRelative);
 
-          scheduledNotes.push(playTimeout);
-          scheduledNotes.push(stopTimeout);
+          scheduledNotes[playTimeout] = {note: note, stopTimeout: stopTimeout};
         });
       },
       cancelAllScheduled: function() {
-        scheduledNotes.forEach(function(timeout) {
-          clearTimeout(timeout);
+        Object.keys(scheduledNotes).forEach(function(id) {
+          stop(id);
         });
       }
     };

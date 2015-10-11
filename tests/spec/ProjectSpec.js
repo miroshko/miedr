@@ -1,10 +1,10 @@
-define(['classes/Note', 'classes/Project'], function(Note, Project) {
+define(['objects/Note', 'objects/Project'], function(Note, projectFactory) {
 
   describe('project', function() {
     var project;
 
     beforeEach(function() {
-      project = new Project();
+      project = projectFactory();
     });
 
     it('gets an empty notes array for an empty project', function() {

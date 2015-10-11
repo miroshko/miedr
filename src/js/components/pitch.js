@@ -1,8 +1,8 @@
 define(['templates',
         'vue',
         'components/note',
-        'classes/Note',
-        'classes/Pitch',
+        'objects/Note',
+        'objects/Pitch',
         'interact'], function(templates, Vue, note, Note, Pitch, interact) {
   var pitch = Vue.extend({
     template: templates.pitch,
@@ -31,15 +31,20 @@ define(['templates',
       });
     },
     ready: function() {
-      // console.log(this.$el);
       var _this = this;
       interact(this.$el).dropzone({
         ondragenter: function(e) {
+          if (!e.dragEvent.target.classList.contains('note'))
+            return;
+
           var id = parseInt(e.dragEvent.target.dataset.id);
           var note = Note.getById(id);
           note.visualVerticalPitchOffset = note.pitch - _this.$data.pitch;
         },
         ondrop: function(e) {
+          if (!e.dragEvent.target.classList.contains('note'))
+            return;
+
           var id = parseInt(e.dragEvent.target.dataset.id);
           var note = Note.getById(id);
           var oldPitch = Pitch.getByPitch(note.pitch);

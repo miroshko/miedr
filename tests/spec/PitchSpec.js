@@ -1,4 +1,4 @@
-define(['classes/Note', 'classes/Pitch'], function(Note, Pitch) {
+define(['objects/Note', 'objects/Pitch'], function(Note, Pitch) {
 
   describe('pitch', function() {
     var pitch;

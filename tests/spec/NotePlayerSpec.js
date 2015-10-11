@@ -1,4 +1,4 @@
-define(['classes/NotePlayer'], function(notePlayerFactory) {
+define(['objects/NotePlayer'], function(notePlayerFactory) {
   describe('Note player', function() {
     var audioContext = null;
     var oscillator = null;

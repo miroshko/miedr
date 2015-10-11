@@ -1,4 +1,4 @@
-define(['classes/Note'], function(Note) {
+define(['objects/Note'], function(Note) {
   var Pitch = function(pitch) {
     this.pitch = pitch;
     this.notes = [];

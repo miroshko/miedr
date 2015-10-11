@@ -11,7 +11,7 @@
       'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
       // 'templates': 'templates',
       // 'components': 'components',
-      // 'classes': 'classes'
+      // 'objects': 'objects'
     },
     shim: {
       'jasmine': {

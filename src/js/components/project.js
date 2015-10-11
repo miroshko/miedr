@@ -11,23 +11,21 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
           return;
 
         var notes = project.getNotesArray();
-        project.note_scheduler.schedule(project.current_position, project.tempo, notes);
 
         project.playback_interval = setInterval(function() {
           project.current_position += 1 * resolution_ms * project.tempo / 60;
         }, resolution_ms);
-        this.$dispatch('schedule_notes', this.$data);
+        this.$dispatch('play', project);
         project.playing = true;
       },
       pause: function() {
         clearInterval(this.$data.playback_interval);
-        this.$data.note_scheduler.cancelAllScheduled();
+        this.$dispatch('stop');
         this.$data.playing = false;
         this.playback_interval = null;
       },
       stop: function() {
         this.pause();
-        this.$data.note_scheduler.cancelAllScheduled();
         this.$data.current_position = 0;
       }
     },

@@ -1,4 +1,4 @@
-define(['classes/Note', 'classes/Track'], function(Note, Track) {
+define(['objects/Note', 'objects/Track'], function(Note, Track) {
 
   describe('track', function() {
     var track;

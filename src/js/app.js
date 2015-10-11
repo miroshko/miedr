@@ -3,9 +3,9 @@
 require.config({
   baseUrl: 'js',
   paths: {
-    'lodash': '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
-    'vue': '//cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
-    'interact': '//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min',
+    'lodash': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
+    'vue': 'https://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
+    'interact': 'https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min',
     'templates': 'templates'
   },
   shim: {
@@ -17,14 +17,15 @@ require.config({
 
 require([
   'vue',
-  'classes/Project',
+  'objects/Project',
   'components/project',
-  'classes/NoteScheduler',
-  'classes/AudioPool'
-  ], function(Vue, Project, ProjectComponent, NoteScheduler, AudioPool) {
-  var audio_pool = new AudioPool();
-  var note_scheduler = new NoteScheduler(audio_pool);
-  var project = new Project(note_scheduler);
+  'objects/NoteScheduler',
+  'objects/NotePlayer',
+  ], function(Vue, projectFactory, ProjectComponent, noteSchedulerFactory, notePlayerFactory) {
+  var audioContext = new AudioContext();
+  var notePlayer = notePlayerFactory(audioContext);
+  var noteScheduler = noteSchedulerFactory(notePlayer);
+  var project = projectFactory();
 
   project.name = "Project name";
   project.tempo = 60;
@@ -32,8 +33,16 @@ require([
   var miedr = new Vue({
     el: '#the-only-project-so-far',
     data: {project: project},
-    components: {
-      'project': ProjectComponent
-    }
+    components: {project: ProjectComponent}
+  });
+
+  miedr.$on('play', function(project) {
+    noteScheduler.schedule(project.current_position,
+                           project.tempo,
+                           project.getNotesArray());
+  });
+
+  miedr.$on('stop', function() {
+    noteScheduler.cancelAllScheduled();
   });
 });

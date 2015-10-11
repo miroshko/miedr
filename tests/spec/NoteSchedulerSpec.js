@@ -1,4 +1,4 @@
-define(['classes/NoteScheduler'], function(noteSchedulerFactory) {
+define(['objects/NoteScheduler'], function(noteSchedulerFactory) {
   describe('Note scheduler', function() {
     var noteScheduler = null;
     var notePlayer = null;
@@ -42,7 +42,10 @@ define(['classes/NoteScheduler'], function(noteSchedulerFactory) {
         {start:1700, duration:300, pitch: 85}
       ]);
       jasmine.clock().tick(800);
+      expect(notePlayer.stop.calls.count()).toBe(1);
       noteScheduler.cancelAllScheduled();
+      expect(notePlayer.stop.calls.count()).toBe(3);
+      
       notePlayer.stop.calls.reset();
       jasmine.clock().tick(1000);
       expect(notePlayer.stop).not.toHaveBeenCalled();

@@ -1,8 +1,8 @@
-define(['classes/Pitch'], function(Pitch) {
+define(['objects/Pitch'], function(Pitch) {
   function Track() {
     this.id = null;
     this.pitches = [];
-    for(var i = 11; i >= 0; i--) {
+    for(var i = 71; i >= 48; i--) {
       this.pitches.push(new Pitch(i));
     }
     this.volume = 100;
