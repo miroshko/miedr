@@ -33,5 +33,21 @@ define(['classes/NoteScheduler'], function(noteSchedulerFactory) {
       expect(notePlayer.stop.calls.count()).toBe(1)
       jasmine.clock().uninstall();
     });
+
+    it('cancels all scheduled notes', function() {
+      jasmine.clock().install();
+      noteScheduler.schedule(1000, 60, [
+        {start:1500, duration:50, pitch: 80},
+        {start:1600, duration:400, pitch: 83},
+        {start:1700, duration:300, pitch: 85}
+      ]);
+      jasmine.clock().tick(800);
+      noteScheduler.cancelAllScheduled();
+      notePlayer.stop.calls.reset();
+      jasmine.clock().tick(1000);
+      expect(notePlayer.stop).not.toHaveBeenCalled();
+
+      jasmine.clock().uninstall();
+    });
   });
 });
