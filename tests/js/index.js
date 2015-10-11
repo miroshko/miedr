@@ -6,9 +6,9 @@
       'jasmine': '../../tests/jasmine/lib/jasmine-2.0.0/jasmine',
       'jasmine-html': '../../tests/jasmine/lib/jasmine-2.0.0/jasmine-html',
       'boot': '../../tests/jasmine/lib/jasmine-2.0.0/boot',
-      'lodash': '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
-      'vue': '//cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
-      'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
+      'lodash': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
+      'vue': 'https://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
+      'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
       // 'templates': 'templates',
       // 'components': 'components',
       // 'classes': 'classes'
@@ -33,8 +33,11 @@
     '../../tests/spec/ProjectSpec',
     '../../tests/spec/TrackSpec',
     '../../tests/spec/PitchSpec',
-    '../../tests/spec/NoteSpec'
+    '../../tests/spec/NoteSpec',
+    '../../tests/spec/NoteSchedulerSpec',
+    '../../tests/spec/NotePlayerSpec'
   ];
+
 
   // Load Jasmine - This will still create all of the normal Jasmine browser globals unless `boot.js` is re-written to use the
   // AMD or UMD specs. `boot.js` will do a bunch of configuration and attach it's initializers to `window.onload()`. Because

@@ -1,32 +1,37 @@
 define([], function() {
-  function NoteScheduler(audio_pool) {
-    if (!audio_pool) {
-      throw new Error("audio_pool must be passed");
-    }
-    this.audio_pool = audio_pool;
-    this.schedule = function(current_timeframe, tempo, note_or_array) {
-      if (!(note_or_array instanceof Array)) {
-        note_or_array = [note_or_array];
+  return function noteSchedulerFactory(notePlayer) {
+    var scheduledNotes = [];
+
+    return {
+      schedule: function(currentTimeframe, tempo, noteOrArray) {
+        if (!(noteOrArray instanceof Array)) {
+          noteOrArray = [noteOrArray];
+        }
+
+        noteOrArray.forEach(function(note) {
+          var startTimeframeRelative = (note.start - currentTimeframe) * 60 / tempo;
+          var endTimeframeRelative = startTimeframeRelative + note.duration * 60 / tempo;
+
+          if (startTimeframeRelative < 0)
+            return;
+
+          var playTimeout = setTimeout(function() {
+            notePlayer.play(note);
+          }, startTimeframeRelative);
+
+          var stopTimeout = setTimeout(function() {
+            notePlayer.stop(note);
+          }, endTimeframeRelative);
+
+          scheduledNotes.push(playTimeout);
+          scheduledNotes.push(stopTimeout);
+        });
+      },
+      cancelAllScheduled: function() {
+        scheduledNotes.forEach(function(timeout) {
+          clearTimeout(timeout);
+        });
       }
-
-      note_or_array.forEach(function(note) {
-        var start_timeframe = (note.start - current_timeframe) * 60 / tempo;
-        console.log("scheduled to play " + note.pitch + " in " + start_timeframe);
-        if (start_timeframe < 0)
-          return;
-        var end_timeframe = start_timeframe + note.duration;
-        var note_player = this.audio_pool.grabInstance();
-        note_player.setNote(note);
-
-        setTimeout(function() {
-          note_player.play(tempo);
-        }, start_timeframe);
-      }, this);
     };
-    this.cancelAllScheduled = function() {
-
-    };
-  }
-
-  return NoteScheduler;
+  };
 });
