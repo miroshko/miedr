@@ -22,18 +22,18 @@ require([
   'objects/NoteScheduler',
   'objects/NotePlayer',
   ], function(Vue, projectFactory, ProjectComponent, noteSchedulerFactory, notePlayerFactory) {
+  
   var audioContext = new AudioContext();
-  var notePlayer = notePlayerFactory(audioContext);
+  var notePlayer = notePlayerFactory(audioContext, audioContext.destination);
   var noteScheduler = noteSchedulerFactory(notePlayer);
   var project = projectFactory();
 
   project.name = "Project name";
   project.tempo = 60;
 
-  var miedr = new Vue({
+  var miedr = new ProjectComponent({
     el: '#the-only-project-so-far',
-    data: {project: project},
-    components: {project: ProjectComponent}
+    data: project
   });
 
   miedr.$on('play', function(project) {

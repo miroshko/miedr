@@ -19,11 +19,6 @@ define(['objects/NotePlayer'], function(notePlayerFactory) {
       expect(oscillator.start).toHaveBeenCalled();
     });
 
-    it('connects oscillator to destination', function() {
-      notePlayer.play({pitch: 80});
-      expect(oscillator.connect).toHaveBeenCalledWith(destination);
-    });
-
     it('creates oscillator with proper frequency', function() {
       notePlayer.play({pitch: 81});
       expect(oscillator.frequency.value).toBe(880);

@@ -10,17 +10,15 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
         if(this.playing)
           return;
 
-        var notes = project.getNotesArray();
-
         project.playback_interval = setInterval(function() {
           project.current_position += 1 * resolution_ms * project.tempo / 60;
         }, resolution_ms);
-        this.$dispatch('play', project);
+        this.$emit('play', project);
         project.playing = true;
       },
       pause: function() {
         clearInterval(this.$data.playback_interval);
-        this.$dispatch('stop');
+        this.$emit('stop');
         this.$data.playing = false;
         this.playback_interval = null;
       },
