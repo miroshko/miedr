@@ -16,15 +16,21 @@ require.config({
   }
 });
 
-require([
+require([ 
   'vue',
   'objects/Project',
   'components/project',
   'objects/NoteScheduler',
   'objects/NotePlayer',
-  'keyboardjs'
-  ], function(Vue, projectFactory, ProjectComponent, noteSchedulerFactory, notePlayerFactory, keyboardjs) {
-  console.log(keyboardjs);
+  'objects/KeyboardDispatcher'
+], function(
+  Vue,
+  projectFactory,
+  ProjectComponent,
+  noteSchedulerFactory,
+  notePlayerFactory,
+  keyboardDispatcherFactory
+) {
   var audioContext = new AudioContext();
   var notePlayer = notePlayerFactory(audioContext, audioContext.destination);
   var noteScheduler = noteSchedulerFactory(notePlayer);
@@ -38,12 +44,7 @@ require([
     data: project
   });
 
-  keyboardjs.on('space', function() {
-    if (miedr.isPlaying())
-      miedr.pause();
-    else
-      miedr.play();
-  });
+  var keyboard = keyboardDispatcherFactory(miedr);
 
   miedr.$on('play', function(project) {
     noteScheduler.schedule(project.current_position,
