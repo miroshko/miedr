@@ -4,7 +4,7 @@ require.config({
   baseUrl: 'js',
   paths: {
     'lodash': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
-    'vue': 'https://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
+    'vue': 'https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.min',
     'interact': 'https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min',
     'keyboardjs': 'https://cdn.jsdelivr.net/keyboardjs/0.4.2/keyboard',
     'templates': 'templates'

@@ -14,6 +14,22 @@ body {
   padding: 20px;
 }
 
+.project-name label.editing .value {
+  display: none;
+}
+
+.project-name label.editing input {
+  display: inline-block;
+}
+
+.project-name label:not(.editing) .value {
+  display: inline-block;
+}
+
+.project-name label:not(.editing) input {
+  display: none;
+}
+
 .toolbox {
   margin-bottom: 40px;
 }

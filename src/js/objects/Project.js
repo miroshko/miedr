@@ -4,7 +4,7 @@ define(['objects/Track'], function(Track) {
       name: "",
       tempo: 120,
       tracks: [new Track()],
-      current_position: 1000,
+      current_position: 0,
       playback_interval: null, // should be here?
       getNotesArray: function() {
         var notes = [];

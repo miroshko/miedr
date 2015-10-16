@@ -6,7 +6,7 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
     methods: {
       play: function() {
         var project = this.$data;
-        var resolution_ms = 100;
+        var resolution_ms = 25;
         if(project.playing)
           return;
 
@@ -28,6 +28,9 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
       },
       isPlaying: function() {
         return this.$data.playing;
+      },
+      editField: function(fieldName) {
+        this.$set('fieldEdited', fieldName);
       }
     },
     computed: {

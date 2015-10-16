@@ -1,9 +1,13 @@
 <div class="project">
-  <h2 class="project-name">{{ name }}</h2>
+  <h2 class="project-name">
+    <label v-class="editing: fieldEdited == 'name'" v-on="click:editField('name')" >
+      <span class="value">{{ name }}</span>
+      <input type="text" name="name" v-model="name" v-validate="min:1, max: 360" v-on="blur:editField">
+    </label>
+  </h2>
   <div class="toolbox">
     <label>
-      Tempo {{ tempo }}
-      <input type="number" name="tempo" v-model="tempo" v-validate="min:1, max: 360">
+      <span>Tempo</span> <input type="number" name="tempo" v-model="tempo" v-validate="min:1, max: 360">
     </label>
     <button v-class="active: playing == true" v-on="click: play">Play</button>
     <button v-on="click: pause">Pause</button>
