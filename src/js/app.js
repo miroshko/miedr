@@ -6,6 +6,7 @@ require.config({
     'lodash': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min',
     'vue': 'https://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min',
     'interact': 'https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min',
+    'keyboardjs': 'https://cdn.jsdelivr.net/keyboardjs/0.4.2/keyboard',
     'templates': 'templates'
   },
   shim: {
@@ -21,8 +22,9 @@ require([
   'components/project',
   'objects/NoteScheduler',
   'objects/NotePlayer',
-  ], function(Vue, projectFactory, ProjectComponent, noteSchedulerFactory, notePlayerFactory) {
-  
+  'keyboardjs'
+  ], function(Vue, projectFactory, ProjectComponent, noteSchedulerFactory, notePlayerFactory, keyboardjs) {
+  console.log(keyboardjs);
   var audioContext = new AudioContext();
   var notePlayer = notePlayerFactory(audioContext, audioContext.destination);
   var noteScheduler = noteSchedulerFactory(notePlayer);
@@ -34,6 +36,13 @@ require([
   var miedr = new ProjectComponent({
     el: '#the-only-project-so-far',
     data: project
+  });
+
+  keyboardjs.on('space', function() {
+    if (miedr.isPlaying())
+      miedr.pause();
+    else
+      miedr.play();
   });
 
   miedr.$on('play', function(project) {
