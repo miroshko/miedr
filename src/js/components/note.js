@@ -23,9 +23,13 @@ define(['templates', 'vue', 'interact'], function(templates, Vue, interact) {
       var _this = this;
       interact(this.$el).draggable({
         onmove: function(e) {
-          var new_pos = _this.$data.start + e.dx / _this.px_ratio;
+          if (!_this.$data.tempStart)
+            _this.$data.tempStart = _this.$data.start;
+
+          var new_pos = _this.$data.tempStart + e.dx / _this.px_ratio;
           new_pos = Math.max(0, new_pos);
-          _this.$data.start = new_pos;
+          _this.$data.tempStart = new_pos;
+          _this.$data.start = _this.$parent.getGridAlignedPos(new_pos);
         }
       });
       interact(this.$el.querySelector('.resize-marker-end')).draggable({

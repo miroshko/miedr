@@ -9,14 +9,30 @@ define(['templates', 'vue', 'components/pitch'], function (templates, Vue, pitch
       });
     },
     computed: {
+      // @todo: check better practice how to not explicitly refer to parent
       px_ratio: function() {
         return this.$parent.px_ratio;
       },
       px_y_ratio: function() {
         return this.$parent.px_y_ratio;
       },
-      current_position: function() {
-        return this.$parent.current_position;
+      currentPosition: function() {
+        return this.$parent.currentPosition;
+      },
+      viewportWidth: function() {
+      },
+      gridLines: function() {
+        var sheetLength = 16000;
+        var barLength = 1000;
+        var barSplit = 4;
+        var gridLines = [];
+        for(var line = 0; line < sheetLength / barLength * barSplit; line += 1) {
+          gridLines.push({
+            position: line / barSplit * barLength,
+            primary: line % barSplit === 0
+          });
+        }
+        return gridLines;
       }
     }
   });

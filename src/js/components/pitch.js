@@ -13,20 +13,7 @@ define(['templates',
         if (_this.mode == 'erase') {
           _this.destroyNote(note);
         } else {
-          //              Ctrl       wo Ctrl
-          // >1 Selctd    deselect   select, deselect others
-          // Selctd       deselect   deselect, deselect others
-          // Not selctd   select     select, deselect others
-
-
-          if (!e.ctrlKey) {
-            Note.getSelected().forEach(function(currNote) {
-              if (currNote.id != note.id) {
-                currNote.selected = !currNote.selected;
-              }
-            });
-          }
-          note.selected = !note.selected;
+          _this.noteClicked(note, e);
         }
       });
     },
@@ -61,9 +48,35 @@ define(['templates',
           var posX = e.clientX - e.target.parentNode.parentNode.offsetLeft;
           var note = new Note();
           note.duration = 1000;
-          note.start = posX / this.px_ratio;
+          note.start = this.getGridAlignedPos(posX / this.px_ratio);
           this.$data.addNote(note);
         } 
+      },
+      noteClicked: function(note, e) {
+        //              Ctrl       wo Ctrl
+        // >1 Selctd    deselect   select, deselect others
+        // Selctd       deselect   deselect, deselect others
+        // Not selctd   select     select, deselect others
+
+        if (!e.ctrlKey) {
+          Note.getSelected().forEach(function(currNote) {
+            if (currNote.id != note.id) {
+              currNote.selected = !currNote.selected;
+            }
+          });
+        }
+        note.selected = !note.selected;
+      },
+      getGridAlignedPos: function(pos) {
+        var gridLines = this.$parent.gridLines;
+        var closest = null;
+        gridLines.forEach(function(line) {
+          if (Math.abs(line.position - pos) < Math.abs(closest - pos) || closest === null)
+            closest = line.position;
+          else
+            return;
+        });
+        return closest;
       },
       destroyNote: function(note) {
         this.$data.removeNote(note);  

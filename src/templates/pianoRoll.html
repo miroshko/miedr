@@ -7,7 +7,12 @@
     <li class="key key-{{ pitch % 12 }}" data-pitch="{{ pitch }}" v-repeat="pitches">
     </li>
   </ul><div class="pitch-roll-grid piano-grid">
-    <div class="time-marker" style="left:{{ px_ratio * current_position }}px"></div>
+    <div class="time-marker" style="left:{{ px_ratio * currentPosition }}px"></div>
+    <ul>
+      <li v-repeat="gridLines" v-class="grid-line-primary: primary" class="grid-line" style="left:{{ px_ratio * position }}px">
+        
+      </li>
+    </ul>
     <ul>
       <li v-repeat="pitches" v-component="pitch">
 

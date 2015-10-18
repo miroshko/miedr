@@ -11,7 +11,7 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
           return;
 
         project.playback_interval = setInterval(function() {
-          project.current_position += 1 * resolution_ms * project.tempo / 60;
+          project.currentPosition += 1 * resolution_ms * project.tempo / 60;
         }, resolution_ms);
         this.$emit('play', project);
         project.playing = true;
@@ -24,7 +24,7 @@ define(['vue', 'components/pianoRoll', 'lib/vue-validator', 'templates'], functi
       },
       stop: function() {
         this.pause();
-        this.$data.current_position = 0;
+        this.$data.currentPosition = 0;
       },
       isPlaying: function() {
         return this.$data.playing;

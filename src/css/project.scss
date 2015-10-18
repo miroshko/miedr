@@ -1,0 +1,26 @@
+.project {
+  background: #fff;
+  padding: 20px;
+}
+
+.project-name {
+  label.editing .value {
+    display: none;
+  }
+
+  label.editing input {
+    display: inline-block;
+  }
+
+  label:not(.editing) .value {
+    display: inline-block;
+  }
+
+  label:not(.editing) input {
+    display: none;
+  }
+}
+
+.toolbox {
+  margin-bottom: 40px;
+}

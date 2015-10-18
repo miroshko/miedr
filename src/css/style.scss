@@ -2,36 +2,12 @@
 @import 'track.css';
 @import 'pitchRoll.css';
 @import 'pianoRoll.css';
+@import 'project.css';
 
 body {
   background: #333;
   color: #29d;
   font-family: Muli, Sans;
-}
-
-.project {
-  background: #fff;
-  padding: 20px;
-}
-
-.project-name label.editing .value {
-  display: none;
-}
-
-.project-name label.editing input {
-  display: inline-block;
-}
-
-.project-name label:not(.editing) .value {
-  display: inline-block;
-}
-
-.project-name label:not(.editing) input {
-  display: none;
-}
-
-.toolbox {
-  margin-bottom: 40px;
 }
 
 ul, li {

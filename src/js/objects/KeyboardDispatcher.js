@@ -13,7 +13,7 @@ define(['keyboardjs'], function(keyboardjs) {
 
     keyboardjs.on('home', function(e) {
       if (!proj.isPlaying())
-        proj.$data.current_position = 0;
+        proj.$data.currentPosition = 0;
 
       e.preventDefault();
     });

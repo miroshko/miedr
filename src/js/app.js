@@ -47,7 +47,7 @@ require([
   var keyboard = keyboardDispatcherFactory(miedr);
 
   miedr.$on('play', function(project) {
-    noteScheduler.schedule(project.current_position,
+    noteScheduler.schedule(project.currentPosition,
                            project.tempo,
                            project.getNotesArray());
   });

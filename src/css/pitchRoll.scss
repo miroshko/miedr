@@ -21,3 +21,16 @@ $legendWidth: 100px;
   border: 1px solid rgba(100,100,140, 0.2);
   cursor: col-resize;
 }
+
+.grid-line {
+  position: absolute;
+  top: 0;
+  bottom:0;
+  width: 1px;
+  z-index: 15;
+  background: #ccc;
+}
+
+.grid-line-primary {
+  background: #666;
+}
