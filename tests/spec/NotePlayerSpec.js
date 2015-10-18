@@ -8,8 +8,9 @@ define(['objects/NotePlayer'], function(notePlayerFactory) {
     beforeEach(function() {
       oscillator = jasmine.createSpyObj('oscillator', ['start', 'stop', 'connect']);
       oscillator.frequency = {value: null};
-      audioContext = jasmine.createSpyObj('audioContext', ['createOscillator']);
+      audioContext = jasmine.createSpyObj('audioContext', ['createOscillator', 'createGain']);
       audioContext.createOscillator.and.returnValue(oscillator);
+      audioContext.createGain.and.returnValue({connect: function() {}, gain: {}});
       audioContext.destination = destination;
       notePlayer = notePlayerFactory(audioContext);
     });
